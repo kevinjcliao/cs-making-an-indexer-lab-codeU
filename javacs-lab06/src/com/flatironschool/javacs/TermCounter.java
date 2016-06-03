@@ -19,11 +19,13 @@ import org.jsoup.select.Elements;
 public class TermCounter {
 	
 	private Map<String, Integer> map;
-	private String label;
+  private String label;
+    private int size;
 	
 	public TermCounter(String label) {
 		this.label = label;
 		this.map = new HashMap<String, Integer>();
+    this.size = 0;
 	}
 	
 	public String getLabel() {
@@ -36,8 +38,7 @@ public class TermCounter {
 	 * @return
 	 */
 	public int size() {
-        // TODO: fill this in.
-		return -1;
+      return this.size;
 	}
 
 	/**
@@ -89,6 +90,7 @@ public class TermCounter {
 	public void incrementTermCount(String term) {
 		// System.out.println(term);
 		put(term, get(term) + 1);
+    this.size++;
 	}
 
 	/**

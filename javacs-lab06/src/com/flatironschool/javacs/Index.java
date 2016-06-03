@@ -8,6 +8,7 @@ import java.util.HashSet;
 
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
+import org.jsoup.nodes.Element;
 
 /**
  * Encapsulates a map from search term to set of TermCounter.
@@ -56,9 +57,15 @@ public class Index {
 	public void indexPage(String url, Elements paragraphs) {
 		// make a TermCounter and count the terms in the paragraphs
         // TODO: fill this in
-		
+      TermCounter tc = new TermCounter(url);
+      for(Element paragraph: paragraphs) {
+          tc.processTree(paragraph);
+      }
 		// for each term in the TermCounter, add the TermCounter to the index
         // TODO: fill this in
+      for(String term: tc.keySet()) {
+          this.add(term, tc);
+      }
 	}
 
 	/**
